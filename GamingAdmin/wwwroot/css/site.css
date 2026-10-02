@@ -18,8 +18,61 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    align-items: center;
+    background: linear-gradient(to right, #ffffff, #808080 50%, #000000) !important;
+    background-attachment: fixed !important;
+    display: flex;
+    font-family: bolder, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-display: swap;
+    height: inherit;
+    justify-content: center;
+    min-height: 100vh;
+    background-attachment: fixed;
+    margin: 0;
+    padding-top: 70px;
 }
+
+header .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+main .table {
+    --bs-table-bg: rgba(0, 0, 0, 0, 0.35);
+    --bs-table-color: inherit;
+    --bs-table-striped-bg: transparent;
+    --bs-table-hover-bg: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+main .table > :not(caption) > * > * {
+    background-color: transparent;
+    box-shadow: none;       
+}       
+main h1,
+main .table th,
+main .table td {
+    color: #000 !important;
+    text-shadow: none;
+}
+
+main .table a,    
+main > p > a {    
+    color: #8b0000 !important;    
+}    
+
+main .table {
+    --bs-table-color: #000;
+    background: rgba(255, 255, 255, 0.75) !important;
+}
+
+main .table th {
+    background-color: rgba(255, 255, 255, 0.5) !important; 
+}        
+
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
