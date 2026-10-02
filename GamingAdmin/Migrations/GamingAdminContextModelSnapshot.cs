@@ -33,10 +33,6 @@ namespace GamingAdmin.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CoverImageUrl")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Genre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -65,7 +61,7 @@ namespace GamingAdmin.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Game");
+                    b.ToTable("Game", (string)null);
                 });
 #pragma warning restore 612, 618
         }
