@@ -7,6 +7,7 @@ namespace GamingAdmin.Models
     {
         public int Id { get; set; }
 
+        // Data Annotations for validation and display purposes
         [Required(ErrorMessage = "Title is required")]
         [Display(Name = "Title")]
         public string Title { get; set; } = string.Empty;

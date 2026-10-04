@@ -13,9 +13,10 @@ public class GamesController : Controller
     }
 
     // GET: GAMES
+    // I changed this so that the Index page displays by release date
     public async Task<IActionResult> Index()
     {
-        return View(await _context.Game.ToListAsync());
+        return View(await _context.Game.OrderBy(g => g.ReleaseDate).ToListAsync());
     }
 
     // GET: GAMES/Details/5

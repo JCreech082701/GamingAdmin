@@ -17,6 +17,7 @@ html {
   min-height: 100%;
 }
 
+/* In here I changed the font, how it's weighted, and added a gradient for the overall page, not sure so far how much I like it, could be changed/improved later*/
 body {
     margin-bottom: 60px;
     align-items: center;
@@ -41,6 +42,22 @@ header .navbar {
     z-index: 1000;
 }
 
+/* Footer Styles this here will ignore how tall the page is*/
+html {
+    position: static;
+}
+
+body {
+    margin-bottom: 0 !important;
+}
+
+.footer {
+    position: static !important;
+    margin-top: 2rem;
+    line-height: 60px;
+}
+
+/* Table Styles for the table of course, this will be changed later as the site progresses, I eventually want to have a carousel.*/
 main .table {
     --bs-table-bg: rgba(0, 0, 0, 0, 0.35);
     --bs-table-color: inherit;
@@ -71,14 +88,58 @@ main .table {
 
 main .table th {
     background-color: rgba(255, 255, 255, 0.5) !important; 
-}        
+}
+/* Added this kinda last second to make the edges around the text box round, to give it a more modern look */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 15px;
+    overflow: hidden;
+}
 
+/* Body Styles: This here will let me stack the background image on top of my gradient I made above*/
+body {
+    background: url("/images/logo.png") no-repeat center 120px / 200px auto, linear-gradient(to right, #ffffff, #000000);
+    background-attachment: scroll;
+    min-height: 100vh;
+}
+/* This continues to align and style the hero/gradient logo */
+.hero-logo {
+    text-align: center;
+    padding: 40px 0 0;
+}
+.hero-logo img {
+    max-width: 200px;
+    height: auto;
+}
+
+/*I was experiencing a problem with the footer where it was showing up to the right of the text box, this here will stack everything vertically*/
+body {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+}
+
+.container,
+.footer {
+    width: 100%;
+}
+
+/* This footer is annoying, had another problem where on the main page, it wouldn't stay at the bottom, this here will make sure it has a minimum height and should stay at the bottom now*/
+body {
+    min-height: 100vh;
+}
+
+.footer {
+    margin-top: auto !important;
+}
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+    color: var(--bs-secondary-color);
+    text-align: end;
 }
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    text-align: start;
 }
