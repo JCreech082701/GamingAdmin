@@ -16,7 +16,7 @@ namespace GamingAdmin.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.12")
+                .HasAnnotation("ProductVersion", "10.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -34,6 +34,10 @@ namespace GamingAdmin.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Genre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -61,7 +65,7 @@ namespace GamingAdmin.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Game", (string)null);
+                    b.ToTable("Game");
                 });
 #pragma warning restore 612, 618
         }

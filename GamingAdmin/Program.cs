@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using GamingAdmin.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("GamingAdminContext") ?? throw new InvalidOperationException("Connection string 'GamingAdminContext' not found.");
 
@@ -6,6 +8,8 @@ builder.Services.AddDbContext<GamingAdminContext>(options => options.UseSqlServe
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddScoped<AzureStorageService>();
 
 var app = builder.Build();
 

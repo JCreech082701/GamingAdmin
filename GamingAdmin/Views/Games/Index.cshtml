@@ -7,11 +7,14 @@
 <h1>Hits & Misses Index</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-dark">Create New</a>
+    <a asp-action="Create" class="btn btn-dark" style="border:1px solid white">Create New</a>
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @*img col - no header *@
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
@@ -42,6 +45,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
+             <td>
+                <img src="@item.ImageUrl" alt="@item.Title" class="thumbnail" />
+            </td>
             <td>
                 @Html.DisplayFor(model => item.Title)
             </td>

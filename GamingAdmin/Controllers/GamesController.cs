@@ -1,15 +1,17 @@
-
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GamingAdmin.Models;
+using GamingAdmin.Services;
 
 public class GamesController : Controller
 {
     private readonly GamingAdminContext _context;
+    private readonly IAzureStorageService _blobService;
 
-    public GamesController(GamingAdminContext context)
+    public GamesController(GamingAdminContext context, AzureStorageService blobService)
     {
         _context = context;
+        _blobService = blobService;
     }
 
     // GET: GAMES
@@ -43,15 +45,30 @@ public class GamesController : Controller
         return View();
     }
 
+    /*
+     TO-DO Handle image upload and save the image path to the database. You can use IFormFile to handle file uploads in ASP.NET Core. 
+     */
+
     // POST: GAMES/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create([Bind("Id,Title,Synopsis,Genre,Platform,Rating,Achievements,ReleaseDate,Price")] Game game)
+    public async Task<IActionResult> Create([Bind("Id,Title,Synopsis,Genre,Platform,Rating,Achievements,ReleaseDate,Price")] Game game, IFormFile imageFile)
     {
+
+        if (imageFile == null)
+        {
+            ModelState.AddModelError("ImageFile", "The image file upload is required");
+        }
+
+
         if (ModelState.IsValid)
         {
+        
+                // Upload the image to Azure Blob Storage
+            string imageUrl = await _blobService.UploadFileAsync(imageFile, imageFile.FileName);
+            game.ImageUrl = imageUrl;
             _context.Add(game);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -80,7 +97,7 @@ public class GamesController : Controller
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int? id, [Bind("Id,Title,Synopsis,Genre,Platform,Rating,Achievements,ReleaseDate,Price")] Game game)
+    public async Task<IActionResult> Edit(int? id, [Bind("ImageUrl,Id,Title,Synopsis,Genre,Platform,Rating,Achievements,ReleaseDate,Price")] Game game)
     {
         if (id != game.Id)
         {

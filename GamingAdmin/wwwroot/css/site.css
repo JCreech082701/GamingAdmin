@@ -12,49 +12,38 @@ html {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 /* In here I changed the font, how it's weighted, and added a gradient for the overall page, not sure so far how much I like it, could be changed/improved later*/
 body {
     margin-bottom: 60px;
     align-items: center;
-    background: linear-gradient(to right, #ffffff, #808080 50%, #000000) !important;
+    background-image: url('/images/background.jpg') !important;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed !important;
+    min-height: 100vh;
     display: flex;
     font-family: bolder, 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
     font-display: swap;
     height: inherit;
     justify-content: center;
-    min-height: 100vh;
-    background-attachment: fixed;
-    margin: 0;
-    padding-top: 70px;
 }
 
-header .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-/* Footer Styles this here will ignore how tall the page is*/
-html {
-    position: static;
+html,
+body {
+    height: 100%;
 }
 
 body {
-    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.footer {
-    position: static !important;
-    margin-top: 2rem;
-    line-height: 60px;
+main {
+    flex: 1;
 }
 
 /* Table Styles for the table of course, this will be changed later as the site progresses, I eventually want to have a carousel.*/
@@ -69,17 +58,6 @@ main .table > :not(caption) > * > * {
     background-color: transparent;
     box-shadow: none;       
 }       
-main h1,
-main .table th,
-main .table td {
-    color: #000 !important;
-    text-shadow: none;
-}
-
-main .table a,    
-main > p > a {    
-    color: #ffffff !important;    
-}    
 
 main .table {
     --bs-table-color: #000;
@@ -97,21 +75,6 @@ main .table th {
     overflow: hidden;
 }
 
-/* Body Styles: This here will let me stack the background image on top of my gradient I made above*/
-body {
-    background: url("/images/logo.png") no-repeat center 120px / 200px auto, linear-gradient(to right, #ffffff, #000000);
-    background-attachment: scroll;
-    min-height: 100vh;
-}
-/* This continues to align and style the hero/gradient logo */
-.hero-logo {
-    text-align: center;
-    padding: 40px 0 0;
-}
-.hero-logo img {
-    max-width: 200px;
-    height: auto;
-}
 
 /*I was experiencing a problem with the footer where it was showing up to the right of the text box, this here will stack everything vertically*/
 body {
@@ -124,15 +87,6 @@ body {
 .container,
 .footer {
     width: 100%;
-}
-
-/* This footer is annoying, had another problem where on the main page, it wouldn't stay at the bottom, this here will make sure it has a minimum height and should stay at the bottom now*/
-body {
-    min-height: 100vh;
-}
-
-.footer {
-    margin-top: auto !important;
 }
 /* Very last minute, I wanted to make Create New a full button, going by my notes that I have from a calculator I recently made, as well as Yousef's course from last year, no biggie*/
 .btn-create {
@@ -169,4 +123,21 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
+}
+
+.thumbnail {
+    width: auto;
+    max-height: 180px;
+    border-radius: 8px;
+}
+.detailsThumbnail {
+    box-shadow: 0 0 8px white !important;
+}
+
+.details-box {
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px white;
 }

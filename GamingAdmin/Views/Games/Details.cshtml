@@ -4,69 +4,48 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="mb-4">@Html.DisplayFor(model => model.Title)</h1>
 
-<div>
-    <h4>Game</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Synopsis)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Synopsis)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Platform)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Platform)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rating)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Achievements)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Achievements)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReleaseDate)
-        </dd>
-    </dl>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-    </dl>
+<div class="row">
+
+    <div class="col-md-4">
+        <img src="@Model.ImageUrl"
+             alt="@Model.Title"
+             style="border:12px solid black;"
+             class="detailsThumbnail w-75 rounded-4" />
+    </div>
+
+    <div class="col-md-8">
+        <div class="details-box">
+
+            <dl class="row">
+                <dt class="col-sm-1">@Html.DisplayNameFor(model => model.Synopsis):</dt>
+                <dd class="col-sm-11">@Html.DisplayFor(model => model.Synopsis)</dd>
+
+                <dt class="col-sm-1">@Html.DisplayNameFor(model => model.Genre):</dt>
+                <dd class="col-sm-11">@Html.DisplayFor(model => model.Genre)</dd>
+
+                <dt class="col-sm-1">@Html.DisplayNameFor(model => model.Platform):</dt>
+                <dd class="col-sm-11">@Html.DisplayFor(model => model.Platform)</dd>
+
+                <dt class="col-sm-1">@Html.DisplayNameFor(model => model.Rating):</dt>
+                <dd class="col-sm-11">@Html.DisplayFor(model => model.Rating)</dd>
+
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Achievements):</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.Achievements)</dd>
+
+                <dt class="col-sm-2">@Html.DisplayNameFor(model => model.ReleaseDate):</dt>
+                <dd class="col-sm-10">@Html.DisplayFor(model => model.ReleaseDate)</dd>
+
+                <dt class="col-sm-1">@Html.DisplayNameFor(model => model.Price):</dt>
+                <dd class="col-sm-10">$@Html.DisplayFor(model => model.Price)</dd>
+            </dl>
+
+        </div>
+    </div>
+
 </div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
