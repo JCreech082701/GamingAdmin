@@ -6,8 +6,8 @@
         // return: the URL of the uploaded file as a string
         public Task<string> UploadFileAsync(IFormFile file, string fileName);
 
+        //
         // TO-DO: add a new function to delete a file to handle when a trail record is deleted
-
+        //
     }
-
 }

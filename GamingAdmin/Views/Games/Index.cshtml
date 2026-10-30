@@ -28,7 +28,7 @@
                 @Html.DisplayNameFor(model => model.Platform)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rating)
+                @Html.DisplayNameFor(model => model.GamerRating)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Achievements)
@@ -45,7 +45,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-             <td>
+            <td>
                 <img src="@item.ImageUrl" alt="@item.Title" class="thumbnail" />
             </td>
             <td>
@@ -55,15 +55,15 @@
                 @Html.DisplayFor(model => item.Synopsis)
             </td>
             <td>
-                @Html.DisplayFor(model => item.Genre)
+                @Html.DisplayFor(model => item.Genre.Title)
             </td>
             <td>
                 @Html.DisplayFor(model => item.Platform)
             </td>
             <td>
-                @Html.DisplayFor(model => item.Rating)
+                @Html.DisplayFor(model => item.GamerRating)
             </td>
-            <td>
+            <td> 
                 @Html.DisplayFor(model => item.Achievements)
             </td>
             <td>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 
@@ -10,7 +11,14 @@ namespace GamingAdmin.Models
 
         public int GenreId { get; set; }
 
+        [ValidateNever]
         public Genre Genre { get; set; } = null!;
+
+        public int GamerRatingId { get; set; }
+
+        [ValidateNever]
+        public GamerRating GamerRating { get; set; } = null!;
+        
 
         // Data Annotations for validation and display purposes
         [Required(ErrorMessage = "Title is required")]
@@ -29,9 +37,9 @@ namespace GamingAdmin.Models
         [Display(Name = "Platform")]
         public string Platform { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Rating is required")]
-        [Display(Name = "Rating")]
-        public string Rating { get; set; } = string.Empty;
+        //[Required(ErrorMessage = "Rating is required")]
+        //[Display(Name = "Rating")]
+        //public string Rating { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Achievements are required")]
         [Display(Name = "Achievements")]

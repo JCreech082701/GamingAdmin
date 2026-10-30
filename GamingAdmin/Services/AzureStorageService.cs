@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using GamingAdmin.Services;
 
 namespace GamingAdmin.Services
 {
@@ -17,10 +18,10 @@ namespace GamingAdmin.Services
             _configuration = configuration;
 
             // get Azure Storage container name
-            containerName = _configuration["CritHitOrMiss:ContainerName"] ?? throw new InvalidOperationException("Missing configuration: CritHitOrMiss:ContainerName");
+            containerName = _configuration["CritHitOrMiss:ContainerName"] ?? throw new InvalidOperationException("Missing configuration: AzureStorage:ContainerName");
 
             // get Azure Storage connection string
-            string connectionString = _configuration["CritHitOrMiss:ConnectionString"] ?? throw new InvalidOperationException("Missing configuration: CritHitOrMiss:ConnectionString");
+            string connectionString = _configuration["CritHitOrMiss:ConnectionString"] ?? throw new InvalidOperationException("Missing configuration: AzureStorage:ConnectionString");
 
             // initialize Azure blob client
             blobServiceClient = new BlobServiceClient(connectionString);
@@ -33,6 +34,7 @@ namespace GamingAdmin.Services
 
             var blobClient = containerClient.GetBlobClient(fileName);
 
+            // Claude ai helped - a known problem
             var options = new BlobUploadOptions
             {
                 HttpHeaders = new BlobHttpHeaders
@@ -44,7 +46,7 @@ namespace GamingAdmin.Services
             // file I/O
             using (var stream = file.OpenReadStream())
             {
-                await blobClient.UploadAsync(stream, options);
+                await blobClient.UploadAsync(stream, options); // pass in options when uploading
             }
 
             // return the URL for the saved file
