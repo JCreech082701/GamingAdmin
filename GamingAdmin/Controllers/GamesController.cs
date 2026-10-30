@@ -35,8 +35,9 @@ public class GamesController : Controller
             return NotFound();
         }
 
-        var game = await _context.Game            
+        var game = await _context.Game
             .Include(g => g.Genre)
+            .Include(g => g.GamerRating)
             .FirstOrDefaultAsync(m => m.Id == id);
 
         if (game == null)
@@ -97,7 +98,7 @@ public class GamesController : Controller
         ViewBag.GenreId = new SelectList( genres, "Id", "Title", game.GenreId);
 
         var ratings = _context.GamerRating.ToList();
-        ViewBag.GamerRatingId = new SelectList(genres, "Id", "Title", game.GamerRatingId);
+        ViewBag.GamerRatingId = new SelectList(ratings, "Id", "Title", game.GamerRatingId);
 
 
         return View(game);
@@ -138,7 +139,7 @@ public class GamesController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(
         int? id,
-        [Bind("ImageUrl,Id,Title,Synopsis,GenreId,Platform,GamerRating,Achievements,ReleaseDate,Price")]
+        [Bind("ImageUrl,Id,Title,Synopsis,GenreId,Platform,GamerRatingId,Achievements,ReleaseDate,Price")]
         Game game)
     {
         if (id != game.Id)
