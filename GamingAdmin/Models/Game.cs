@@ -7,13 +7,16 @@ namespace GamingAdmin.Models
 {
     public class Game
     {
+        // Id
         public int Id { get; set; }
 
+        // GenreId & Genre, commented out the old Genre
         public int GenreId { get; set; }
 
         [ValidateNever]
         public Genre Genre { get; set; } = null!;
 
+        // This is my version of AudienceRating, commented out Rating
         public int GamerRatingId { get; set; }
 
         [ValidateNever]
