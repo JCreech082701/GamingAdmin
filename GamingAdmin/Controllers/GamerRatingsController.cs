@@ -15,9 +15,7 @@ public class GamerRatingsController : Controller
     // GET: GAMERRATINGS
     public async Task<IActionResult> Index()    
     {
-        return View(await _context.GamerRating
-            .Include(g => g.Games)
-            .ToListAsync());
+        return View(await _context.GamerRating.ToListAsync());
     }
 
     // GET: GAMERRATINGS/Details/5

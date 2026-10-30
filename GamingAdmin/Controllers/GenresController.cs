@@ -15,9 +15,7 @@ public class GenresController : Controller
     // GET: GENRES
     public async Task<IActionResult> Index()    
     {
-        return View(await _context.Genre
-            .Include(g => g.Games)
-            .ToListAsync());
+        return View(await _context.Genre.ToListAsync());
     }
 
     // GET: GENRES/Details/5
